@@ -1,0 +1,46 @@
+/* font-family: "Montserrat", sans-serif;
+font-family: "Ubuntu", sans-serif;
+font-family: "Work Sans", sans-serif; */
+
+* {
+  font-family: "Ubuntu", sans-serif;
+}
+input[type="checkbox"]:checked + p {
+  color: green;
+  text-decoration: line-through;
+}
+
+.tasks-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 10px;
+}
+
+body html {
+  height: 100%;
+}
+
+footer {
+  width: 100%;
+  margin-top: 25px;
+}
+
+.icon-color {
+  fill: white;
+}
+
+.list-item {
+  border-bottom: solid 1px;
+  background-color: #e9ecef;
+  border-radius: 7%;
+}
+
+.p-inline {
+  display: inline;
+}
+
+.btn:hover {
+  color: #f8f9fa !important;
+  background-color: #495057 !important;
+}

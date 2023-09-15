@@ -1,0 +1,65 @@
+<!-- File for tab "Work tasks"  -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Below -  Bootstrap adding -->
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+  <title>Work tasks</title>
+</head>
+
+<body>
+
+  <!-- Code below allows add ready file. In this case its header.ejs. This is truly helpful because im using only 1 line of code to add prepared section like this   -->
+  <%- include("partials/header.ejs") %>
+
+
+    <!-- Form below contains a few elements. JS script for displaying current date. Input for take some data from user and send it thru the middleware, and button which is simply confirm adding new task.   -->
+    <form class=" py-2 text-bg-secondary text-center" action="/work" method="POST">
+
+      <!-- This <p> element allows to display the current date.-->
+      <p class="p-inline mx-4">
+        <%= new Intl.DateTimeFormat('en-GB', { year: 'numeric' , month: 'short' , day: '2-digit' }).format(new Date())
+          %>
+      </p>
+
+      <input type="text" name="addTaskWork" placeholder="Write Your task" autocomplete="off" class="text-center">
+      <button class="btn btn-outline-light text-light p-2  mx-4" type="/work" value="OK">Add new task</button>
+
+    </form>
+
+    <!-- Code below using a forEach loop to create new element of list and add this to the page using a EJS. Styling with CSS and Bootstrap -->
+    <div class="tasks-container container-fluid mb-5 pt-5">
+      <% if (locals.newTaskWork) {%>
+        <ul class="list-unstyled pt-1">
+          <%newTaskWork.forEach((newTaskWork)=> { %>
+            <li class="p-3 list-item">
+              <input type="checkbox">
+              <p class="p-inline">
+                <%=newTaskWork %>
+              </p>
+            </li>
+            <% })%>
+        </ul>
+        <% } %>
+    </div>
+
+    <!-- Code below allows add ready file. In this case its footer.ejs. This is truly helpful because im using only 1 line of code to add prepared section like this.   -->
+    <%- include("partials/footer.ejs") %>
+
+</body>
+
+</html>
